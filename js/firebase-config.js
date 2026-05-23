@@ -14,7 +14,6 @@
 //
 // REPLACE THE VALUES BELOW WITH YOUR OWN FIREBASE CONFIG:
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyAmVuOtsxgoRtebWizlcBuQRmdBGWUrUlg",
   authDomain: "ramaiah-lost-found.firebaseapp.com",
@@ -24,6 +23,7 @@ const firebaseConfig = {
   appId: "1:868595985346:web:b23c9f8bdac71cf2bdc45b",
   measurementId: "G-3FM7PH74LH"
 };
+
 // ─── Firebase SDK (v9 compat mode — works without npm) ───
 // These scripts are loaded via CDN in each HTML page.
 // Initialize Firebase
