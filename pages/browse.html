@@ -134,7 +134,10 @@
           if (sel) sel.value = params.get('cat');
         }
 
+        console.log('Loading items with filters:', currentFilters);
         const items = await getAllItems(currentFilters);
+        console.log('Loaded items:', items.length);
+        
         const count = document.getElementById('result-count');
         if (count) count.textContent = items.length + ' item' + (items.length !== 1 ? 's' : '') + ' found';
 
@@ -148,9 +151,12 @@
           container.innerHTML = items.map(buildItemCard).join('');
         }
       } catch (e) {
+        console.error('Error loading items:', e);
         container.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">
           <i class="fa-solid fa-triangle-exclamation"></i>
-          <h3>Error loading items</h3><p>Please refresh the page.</p>
+          <h3>Error loading items</h3>
+          <p>Error: ${e.message}</p>
+          <p>Please check the browser console for details.</p>
         </div>`;
       }
     }
