@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ramaiah Lost & Found Portal</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div>
+          <div class="logo-title">Lost &amp; Found</div>
+          <div class="logo-sub">MS Ramaiah College of Engineering</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="pages/browse.html" class="nav-link">Browse Items</a>
+        <a href="pages/report.html" class="nav-link">Report Item</a>
+        <a href="pages/about.html" class="nav-link">About</a>
+      </nav>
+      <a href="pages/report.html" class="btn-primary">+ Report Item</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">Design Thinking &amp; Idea Lab Project</div>
+    <h1 class="hero-title">Find what's lost.<br/><em>Return what's found.</em></h1>
+    <p class="hero-desc">A smarter way for Ramaiah students to report and recover lost belongings — no WhatsApp chaos, no notice boards.</p>
+    <div class="hero-actions">
+      <a href="pages/report.html" class="btn-primary btn-lg">Report a Lost Item</a>
+      <a href="pages/browse.html" class="btn-outline btn-lg">Browse Found Items</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-pill"><span class="stat-num" id="stat-total">0</span> items listed</div>
+      <div class="stat-pill"><span class="stat-num" id="stat-resolved">0</span> items returned</div>
+      <div class="stat-pill"><span class="stat-num">100%</span> free</div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Three simple steps</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon"><i class="fa-solid fa-camera"></i></div>
+          <h3>Post your item</h3>
+          <p>Fill a quick form — add a photo, description, and where you lost or found it on campus.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <h3>Browse the board</h3>
+          <p>Search and filter all reported items. Filter by category, date, or location on campus.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon"><i class="fa-solid fa-handshake"></i></div>
+          <h3>Connect &amp; collect</h3>
+          <p>Click to contact the finder or owner directly via WhatsApp. Mark item resolved once returned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT ITEMS PREVIEW -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-label">Recent posts</div>
+      <h2 class="section-title">Latest reported items</h2>
+      <div class="items-grid" id="recent-items">
+        <div class="item-card loading-card">
+          <div class="loading-pulse"></div>
+        </div>
+        <div class="item-card loading-card">
+          <div class="loading-pulse"></div>
+        </div>
+        <div class="item-card loading-card">
+          <div class="loading-pulse"></div>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="pages/browse.html" class="btn-outline">View all items →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Browse by category</div>
+      <h2 class="section-title">What are you looking for?</h2>
+      <div class="categories-grid">
+        <a href="pages/browse.html?cat=id-card" class="cat-card">
+          <i class="fa-solid fa-id-card"></i>
+          <span>ID Cards</span>
+        </a>
+        <a href="pages/browse.html?cat=phone" class="cat-card">
+          <i class="fa-solid fa-mobile-screen"></i>
+          <span>Phones</span>
+        </a>
+        <a href="pages/browse.html?cat=keys" class="cat-card">
+          <i class="fa-solid fa-key"></i>
+          <span>Keys</span>
+        </a>
+        <a href="pages/browse.html?cat=bag" class="cat-card">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span>Bags</span>
+        </a>
+        <a href="pages/browse.html?cat=wallet" class="cat-card">
+          <i class="fa-solid fa-wallet"></i>
+          <span>Wallets</span>
+        </a>
+        <a href="pages/browse.html?cat=laptop" class="cat-card">
+          <i class="fa-solid fa-laptop"></i>
+          <span>Laptops</span>
+        </a>
+        <a href="pages/browse.html?cat=book" class="cat-card">
+          <i class="fa-solid fa-book"></i>
+          <span>Books</span>
+        </a>
+        <a href="pages/browse.html?cat=other" class="cat-card">
+          <i class="fa-solid fa-box"></i>
+          <span>Other</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="logo-title" style="font-size:1.1rem;">Lost &amp; Found Portal</div>
+        <div class="footer-sub">MS Ramaiah College of Engineering, Bengaluru</div>
+        <div class="footer-credits">
+          <span>Design Thinking &amp; Idea Lab Project</span>
+          <span class="dot">·</span>
+          <span>Bhavani V &amp; Sahana D</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="pages/browse.html">Browse</a>
+        <a href="pages/report.html">Report</a>
+        <a href="pages/about.html">About</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Ramaiah Lost &amp; Found · Built with ❤ for the Ramaiah campus community</div>
+  </footer>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Load recent items on homepage
+    document.addEventListener('DOMContentLoaded', () => {
+      loadRecentItems();
+      loadStats();
+    });
+  </script>
+</body>
+</html>

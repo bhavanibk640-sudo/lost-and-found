@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Ramaiah Lost & Found</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div>
+          <div class="logo-title">Lost &amp; Found</div>
+          <div class="logo-sub">MS Ramaiah College of Engineering</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="browse.html" class="nav-link">Browse Items</a>
+        <a href="report.html" class="nav-link">Report Item</a>
+        <a href="about.html" class="nav-link active">About</a>
+      </nav>
+      <a href="report.html" class="btn-primary">+ Report Item</a>
+    </div>
+  </header>
+
+  <!-- ABOUT CONTENT -->
+  <div class="about-section">
+
+    <div class="section-label">Design Thinking &amp; Idea Lab Project</div>
+    <h1>About This Project</h1>
+    <p>
+      The <strong>Ramaiah Lost &amp; Found Portal</strong> is a student-built web application developed as part of the 
+      Design Thinking &amp; Idea Lab course at MS Ramaiah College of Engineering, Bengaluru.
+    </p>
+    <p>
+      The project addresses a real, everyday problem faced by students on campus — the absence of a 
+      centralized, digital system to report and recover lost belongings. Before this app, students relied 
+      on WhatsApp groups and physical notice boards, which are inefficient, limited in reach, and easy to miss.
+    </p>
+
+    <!-- TEAM -->
+    <div style="margin: 2.5rem 0;">
+      <div class="section-label">Project Team</div>
+      <h2 style="font-size:1.5rem; margin-bottom:1.25rem;">Built by</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="background:#1a1a2e;">BV</div>
+          <div class="team-name">Bhavani V</div>
+          <div class="team-role">Computer Science &amp; Engineering</div>
+          <div class="team-role" style="margin-top:4px; font-size:12px;">MS Ramaiah College of Engineering</div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:#2a9d8f;">SD</div>
+          <div class="team-name">Sahana D</div>
+          <div class="team-role">Computer Science &amp; Engineering</div>
+          <div class="team-role" style="margin-top:4px; font-size:12px;">MS Ramaiah College of Engineering</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN THINKING PROCESS -->
+    <div style="margin: 2.5rem 0;">
+      <div class="section-label">Our Process</div>
+      <h2 style="font-size:1.5rem; margin-bottom:1.25rem;">Design Thinking Framework</h2>
+
+      <div class="dt-steps">
+        <div class="dt-step">
+          <div class="dt-num">1</div>
+          <div>
+            <h4>Empathize</h4>
+            <p>We interviewed 10 students across different departments at Ramaiah. 8 out of 10 had lost something on campus in the past year. Zero of them had a reliable way to report or recover it beyond posting in WhatsApp groups. Students reported frustration, wasted time, and resigned acceptance that lost items would never be returned.</p>
+          </div>
+        </div>
+        <div class="dt-step">
+          <div class="dt-num">2</div>
+          <div>
+            <h4>Define</h4>
+            <p><em>Problem Statement:</em> "Ramaiah students have no centralized, accessible system to report lost items or claim found ones — leading to unnecessary loss of belongings and reduced campus trust."</p>
+          </div>
+        </div>
+        <div class="dt-step">
+          <div class="dt-num">3</div>
+          <div>
+            <h4>Ideate</h4>
+            <p>We brainstormed three solutions: (a) a WhatsApp bot that collects reports via messages, (b) a physical notice board QR code system, and (c) a web application with search and photo upload. We evaluated each on reach, ease of use, and zero-cost feasibility. The web app won on all three.</p>
+          </div>
+        </div>
+        <div class="dt-step">
+          <div class="dt-num">4</div>
+          <div>
+            <h4>Prototype</h4>
+            <p>We built a working web application using HTML, CSS, and JavaScript for the frontend, with Firebase (free tier) as the database and image storage backend. The app was hosted free on GitHub Pages and tested with real students within 2 weeks of starting development.</p>
+          </div>
+        </div>
+        <div class="dt-step">
+          <div class="dt-num">5</div>
+          <div>
+            <h4>Test</h4>
+            <p>We ran a one-week test with 5 classmates. During this period, 3 items were posted and 2 were successfully returned to their owners — a 67% resolution rate in the first week alone. Students gave feedback that the WhatsApp contact feature was the most useful part of the app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH STACK -->
+    <div style="margin: 2.5rem 0;">
+      <div class="section-label">Technology</div>
+      <h2 style="font-size:1.5rem; margin-bottom:1.25rem;">Tech Stack (100% Free)</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:1rem;">
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem;">
+          <i class="fa-brands fa-html5" style="font-size:1.5rem; color:#e63946; margin-bottom:8px; display:block;"></i>
+          <div style="font-weight:600; font-size:14px;">HTML / CSS / JS</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Frontend — no framework needed</div>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem;">
+          <i class="fa-solid fa-database" style="font-size:1.5rem; color:#f4a261; margin-bottom:8px; display:block;"></i>
+          <div style="font-weight:600; font-size:14px;">Firebase Firestore</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Database — free up to 1GB</div>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem;">
+          <i class="fa-brands fa-github" style="font-size:1.5rem; color:#333; margin-bottom:8px; display:block;"></i>
+          <div style="font-weight:600; font-size:14px;">GitHub Pages</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Free hosting with live URL</div>
+        </div>
+        <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1.25rem;">
+          <i class="fa-brands fa-whatsapp" style="font-size:1.5rem; color:#25d366; margin-bottom:8px; display:block;"></i>
+          <div style="font-weight:600; font-size:14px;">WhatsApp Integration</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Direct contact via deep link</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IMPACT -->
+    <div style="margin: 2.5rem 0; background:var(--primary); border-radius:var(--radius); padding:2rem; color:white;">
+      <div style="font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; opacity:0.5; margin-bottom:0.5rem;">Project Impact</div>
+      <h2 style="font-size:1.4rem; color:white; margin-bottom:1rem;">Why this matters for Ramaiah</h2>
+      <p style="opacity:0.75; font-size:14px; line-height:1.8; margin-bottom:0;">
+        MS Ramaiah College has over 10,000 students spread across multiple blocks, hostels, and facilities.
+        Items get lost every single day — ID cards, phones, keys, laptops. Without a system, most of these 
+        are never returned. This portal gives every student a free, instant, campus-specific tool that works 
+        on any device. It costs nothing to run, requires no installation, and connects students directly 
+        via WhatsApp — the communication tool they already use.
+      </p>
+    </div>
+
+    <div style="text-align:center; margin: 3rem 0 1rem;">
+      <a href="report.html" class="btn-primary btn-lg">Report an Item Now</a>
+      &nbsp;&nbsp;
+      <a href="browse.html" class="btn-outline btn-lg">Browse Lost Items</a>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="logo-title" style="font-size:1.1rem;">Lost &amp; Found Portal</div>
+        <div class="footer-sub">MS Ramaiah College of Engineering, Bengaluru</div>
+        <div class="footer-credits">
+          <span>Design Thinking &amp; Idea Lab</span><span class="dot">·</span>
+          <span>Bhavani V &amp; Sahana D</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="report.html">Report</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Ramaiah Lost &amp; Found · Built with ❤ for the Ramaiah campus community</div>
+  </footer>
+
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

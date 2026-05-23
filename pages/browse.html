@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Items — Ramaiah Lost & Found</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <div>
+          <div class="logo-title">Lost &amp; Found</div>
+          <div class="logo-sub">MS Ramaiah College of Engineering</div>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="browse.html" class="nav-link active">Browse Items</a>
+        <a href="report.html" class="nav-link">Report Item</a>
+        <a href="about.html" class="nav-link">About</a>
+      </nav>
+      <a href="report.html" class="btn-primary">+ Report Item</a>
+    </div>
+  </header>
+
+  <!-- BROWSE HEADER -->
+  <div class="browse-header">
+    <div class="container">
+      <h1>Browse All Items</h1>
+      <p>Search through lost and found items reported by Ramaiah students</p>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters-bar">
+    <div class="filter-group">
+      <i class="fa-solid fa-magnifying-glass" style="color:var(--text-muted); font-size:13px;"></i>
+      <input type="text" class="search-input" id="search-input" placeholder="Search items..." />
+    </div>
+    <div class="filter-group">
+      <label>Type:</label>
+      <select class="filter-select" id="filter-type">
+        <option value="all">All</option>
+        <option value="lost">Lost</option>
+        <option value="found">Found</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Category:</label>
+      <select class="filter-select" id="filter-category">
+        <option value="all">All Categories</option>
+        <option value="id-card">ID Card</option>
+        <option value="phone">Phone</option>
+        <option value="keys">Keys</option>
+        <option value="bag">Bag</option>
+        <option value="wallet">Wallet</option>
+        <option value="laptop">Laptop</option>
+        <option value="book">Book</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Status:</label>
+      <select class="filter-select" id="filter-status">
+        <option value="active">Active</option>
+        <option value="resolved">Resolved</option>
+        <option value="all">All</option>
+      </select>
+    </div>
+    <button class="btn-teal" onclick="applyFilters()" style="padding:8px 16px; font-size:13px;">Apply</button>
+    <span style="font-size:13px; color:var(--text-muted); margin-left:auto;" id="result-count"></span>
+  </div>
+
+  <!-- ITEMS GRID -->
+  <div class="section">
+    <div class="container">
+      <div class="items-grid" id="items-container">
+        <div class="item-card loading-card"><div class="loading-pulse"></div></div>
+        <div class="item-card loading-card"><div class="loading-pulse"></div></div>
+        <div class="item-card loading-card"><div class="loading-pulse"></div></div>
+        <div class="item-card loading-card"><div class="loading-pulse"></div></div>
+        <div class="item-card loading-card"><div class="loading-pulse"></div></div>
+        <div class="item-card loading-card"><div class="loading-pulse"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="logo-title" style="font-size:1.1rem;">Lost &amp; Found Portal</div>
+        <div class="footer-sub">MS Ramaiah College of Engineering, Bengaluru</div>
+        <div class="footer-credits">
+          <span>Design Thinking &amp; Idea Lab Project</span>
+          <span class="dot">·</span>
+          <span>Bhavani V &amp; Sahana D</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="report.html">Report</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 Ramaiah Lost &amp; Found · Built with ❤ for the Ramaiah campus community</div>
+  </footer>
+
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    let currentFilters = { type: 'all', category: 'all', status: 'active', query: '' };
+
+    async function loadItems() {
+      const container = document.getElementById('items-container');
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('cat')) {
+          currentFilters.category = params.get('cat');
+          const sel = document.getElementById('filter-category');
+          if (sel) sel.value = params.get('cat');
+        }
+
+        const items = await getAllItems(currentFilters);
+        const count = document.getElementById('result-count');
+        if (count) count.textContent = items.length + ' item' + (items.length !== 1 ? 's' : '') + ' found';
+
+        if (items.length === 0) {
+          container.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">
+            <i class="fa-solid fa-box-open"></i>
+            <h3>No items found</h3>
+            <p>Try adjusting your filters, or <a href="report.html" style="color:var(--accent);">report an item</a>.</p>
+          </div>`;
+        } else {
+          container.innerHTML = items.map(buildItemCard).join('');
+        }
+      } catch (e) {
+        container.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <h3>Error loading items</h3><p>Please refresh the page.</p>
+        </div>`;
+      }
+    }
+
+    function applyFilters() {
+      currentFilters.type = document.getElementById('filter-type').value;
+      currentFilters.category = document.getElementById('filter-category').value;
+      currentFilters.status = document.getElementById('filter-status').value;
+      currentFilters.query = document.getElementById('search-input').value.trim();
+      loadItems();
+    }
+
+    document.getElementById('search-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') applyFilters();
+    });
+
+    document.addEventListener('DOMContentLoaded', loadItems);
+  </script>
+</body>
+</html>
