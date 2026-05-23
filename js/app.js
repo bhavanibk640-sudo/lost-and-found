@@ -68,17 +68,40 @@ async function getAllItems(filters = {}) {
     }
     return items;
   } else {
-    let query = window.db.collection('items');
-    if (filters.type && filters.type !== 'all') query = query.where('type', '==', filters.type);
-    if (filters.category && filters.category !== 'all') query = query.where('category', '==', filters.category);
-    if (!filters.status || filters.status === 'all') {
-      query = query.where('status', '==', 'active');
-    } else {
-      query = query.where('status', '==', filters.status);
+    // Fetch all items and filter client-side to avoid composite index requirement
+    const snap = await window.db.collection('items').orderBy('createdAt', 'desc').get();
+    let items = snap.docs.map(d => {
+      const data = d.data();
+      return { 
+        id: d.id, 
+        ...data,
+        // Convert Firestore Timestamp to ISO string for consistent handling
+        createdAt: data.createdAt?.toDate?.() || data.createdAt
+      };
+    });
+    
+    // Apply filters client-side
+    if (filters.type && filters.type !== 'all') {
+      items = items.filter(i => i.type === filters.type);
     }
-    query = query.orderBy('createdAt', 'desc');
-    const snap = await query.get();
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    if (filters.category && filters.category !== 'all') {
+      items = items.filter(i => i.category === filters.category);
+    }
+    if (filters.status && filters.status !== 'all') {
+      items = items.filter(i => i.status === filters.status);
+    } else {
+      items = items.filter(i => i.status !== 'resolved');
+    }
+    if (filters.query) {
+      const q = filters.query.toLowerCase();
+      items = items.filter(i =>
+        (i.title || '').toLowerCase().includes(q) ||
+        (i.description || '').toLowerCase().includes(q) ||
+        (i.location || '').toLowerCase().includes(q)
+      );
+    }
+    
+    return items;
   }
 }
 
@@ -88,11 +111,18 @@ async function getRecentItems(limit = 3) {
     return getItems().filter(i => i.status !== 'resolved').slice(0, limit);
   } else {
     const snap = await window.db.collection('items')
-      .where('status', '==', 'active')
       .orderBy('createdAt', 'desc')
       .limit(limit)
       .get();
-    return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    return snap.docs.map(d => {
+      const data = d.data();
+      return { 
+        id: d.id, 
+        ...data,
+        // Convert Firestore Timestamp to ISO string for consistent handling
+        createdAt: data.createdAt?.toDate?.() || data.createdAt
+      };
+    }).filter(i => i.status !== 'resolved');
   }
 }
 
