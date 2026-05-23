@@ -14,15 +14,16 @@
 //
 // REPLACE THE VALUES BELOW WITH YOUR OWN FIREBASE CONFIG:
 
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
 
+const firebaseConfig = {
+  apiKey: "AIzaSyAmVuOtsxgoRtebWizlcBuQRmdBGWUrUlg",
+  authDomain: "ramaiah-lost-found.firebaseapp.com",
+  projectId: "ramaiah-lost-found",
+  storageBucket: "ramaiah-lost-found.firebasestorage.app",
+  messagingSenderId: "868595985346",
+  appId: "1:868595985346:web:b23c9f8bdac71cf2bdc45b",
+  measurementId: "G-3FM7PH74LH"
+};
 // ─── Firebase SDK (v9 compat mode — works without npm) ───
 // These scripts are loaded via CDN in each HTML page.
 // Initialize Firebase
